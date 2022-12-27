@@ -64,3 +64,56 @@ for i in list:
         max = num2 - num
 print(f'Разница между максимальным и минимальным значением дробной части элементов:',
       round(max - min, 3))
+
+
+#                   Задача №4
+# Напишите программу, которая будет преобразовывать десятичное число в двоичное.
+# Пример:
+# 45 -> 101101
+# 3 -> 11
+# 2 -> 10
+
+s = ""
+n = int(input(
+    "Введите число для преобразовывания десятичного числа в двоичное:"))
+while n != 0:
+    s = str(n % 2) + s
+    n //= 2
+    #print(s)
+print(s)
+
+#                   Задача №5
+# Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
+# Пример:
+# для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] Негафибоначчи
+n = int(input('Введите число для перевода:'))
+list = [0]
+list2 = []
+sum = 0
+start = 1
+variable = 0
+
+for i in range(n-1): # получаем числа фибоначи 
+  list.append(sum + start)
+  variable = start
+  start = sum + start
+  sum = variable
+
+sum = 0
+start = -1
+
+for i in range(n-1): # получаем числа негафибоначи
+  if i % 2 ==0:
+    list2.append((sum + start)*-1)
+    variable = start
+    start = sum + start
+    sum = variable
+  
+  else:
+    list2.append(sum + start)
+    variable = start
+    start = sum + start
+    sum = variable
+
+list2.reverse()
+print(list2 + list)
